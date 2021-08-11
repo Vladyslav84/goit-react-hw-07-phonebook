@@ -4,7 +4,7 @@ import s from './ContactForm.module.css';
 import { v4 as uuidv4 } from 'uuid';
 import { addContact } from '../../redux/slices/contacts';
 import selectors from '../../redux/selectors';
-
+// import * as api from '../../api/api'
 // console.log(selectors.getContacts)
 
 export default function ContactForm() {

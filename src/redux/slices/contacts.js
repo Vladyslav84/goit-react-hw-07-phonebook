@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import * as api from '../../api/api'
 
+
+
+const contactsFromDb = api.fetcContacts().then(contactsArr => contactsArr);
+
+console.log(contactsFromDb)
 
 const contactsSlice = createSlice({
     name: 'contacts',
