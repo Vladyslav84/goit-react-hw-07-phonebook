@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import * as api from '../../api/api'
+import * as operations from '../operations';
+import { useDispatch } from 'react-redux';
 
+// const contactsFromDb = api.fetcContacts().then(contactsArr => contactsArr);
 
+// console.log(operations.fetcContacts())
+//   const dispatch = useDispatch;
 
-const contactsFromDb = api.fetcContacts().then(contactsArr => contactsArr);
-
-console.log(contactsFromDb)
-
+// dispatch(operations.fetcContacts());
 const contactsSlice = createSlice({
+  
     name: 'contacts',
     initialState: [],
     reducers: {

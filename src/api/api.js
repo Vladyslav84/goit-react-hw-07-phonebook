@@ -3,16 +3,11 @@ import axios from 'axios';
     axios.defaults.baseURL = 'http://localhost:3003';
    
     export async function fetcContacts ()  {
-     try {
          const response = await axios.get(`/contacts`);
-        //  console.log(response)
-        return response;
-    
-     } catch (error) {
-         alert(error.massage)
-    }
+         return response.data;
+
 };
-fetcContacts ()
+// fetcContacts ()
 // export async function fetcCastsId (movieId)  {
 //        try {
 //     const response = await axios.get(`/movie/${ movieId }/credits?api_key=AUTH_TOKEN&language=en-US`);

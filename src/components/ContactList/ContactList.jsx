@@ -6,9 +6,11 @@ import selectors from '../../redux/selectors';
 
 export default function ContactList  ()  {
   
-  const allContacts = useSelector(state => selectors.getContacts(state));
+  const allContacts = useSelector(state => state.contactsSlice);
   const filter = useSelector(state => selectors.getFilter(state));
   const dispatch = useDispatch();
+
+  console.log(allContacts)
 
   const filteredContactList = allContacts.filter(contact =>
     contact.name.toLocaleLowerCase().includes(filter));

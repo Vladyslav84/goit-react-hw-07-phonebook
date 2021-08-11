@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './ContactForm.module.css';
 import { v4 as uuidv4 } from 'uuid';
 import { addContact } from '../../redux/slices/contacts';
-import selectors from '../../redux/selectors';
+// import selectors from '../../redux/selectors';
+import * as operations from '../../redux/operations'
 // import * as api from '../../api/api'
 // console.log(selectors.getContacts)
 
 export default function ContactForm() {
     const dispatch = useDispatch();
-    const allContacts = useSelector(state => selectors.getContacts(state));
+    useEffect(() => dispatch(operations.fetcContacts()), [dispatch])
+    const allContacts = useSelector(state => console.log(state.contactsSlice));
 
     const handleSubmit = evt => {
         evt.preventDefault();
