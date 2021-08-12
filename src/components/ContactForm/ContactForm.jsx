@@ -10,8 +10,9 @@ import * as operations from '../../redux/operations'
 
 export default function ContactForm() {
     const dispatch = useDispatch();
-    useEffect(() => dispatch(operations.fetcContacts()), [dispatch])
-    const allContacts = useSelector(state => console.log(state.contactsSlice));
+    const allContacts = useSelector(state => console.log(state));
+    useEffect(() => dispatch(operations.fetcContacts()), [dispatch]);
+    
 
     const handleSubmit = evt => {
         evt.preventDefault();
