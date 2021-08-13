@@ -16,15 +16,30 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 //     }
 // };
 
- export const fetcContacts = createAsyncThunk(
-    'contacts/fetcContacts',
-     async () => {
+export const fetcContacts = createAsyncThunk(
+  'contacts/fetcContacts',
+  async () => {
     try {
       const contactsFromDB = await api.fetcContacts();
+      // console.log(contactsFromDB)
       return contactsFromDB;
     } catch (error) {
       return (error);
     }
   },
 
-)
+);
+
+export const postContacts = createAsyncThunk(
+  'contacts/postContacts',
+  async () => {
+    try {
+      const contactsFromDB = await api.postContacts();
+            //  console.log(contactsFromDB)
+      return contactsFromDB;
+    } catch (error) {
+      return (error);
+    }
+  },
+
+);

@@ -7,6 +7,22 @@ import axios from 'axios';
          return response.data;
 
 };
+
+    export async function postContacts (newContact)  {
+        const response = await axios.post(`/contacts`, { console.log(newContact)
+            // id: id ,
+            // name: name,
+            // number: number
+         });
+         return response.data;
+
+};
+
+    export async function deleteContacts (deleteContacts)  {
+        const response = await axios.delete(`/contacts/${deleteContacts}` );
+         return response.data;
+
+};
 // fetcContacts ()
 // export async function fetcCastsId (movieId)  {
 //        try {

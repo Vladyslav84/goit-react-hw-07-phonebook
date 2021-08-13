@@ -12,22 +12,29 @@ export default function ContactForm() {
     const dispatch = useDispatch();
     const allContacts = useSelector(state => state.contactsSlice.entities);
     // useEffect(() => dispatch(operations.fetcContacts()), [dispatch]);
-    
+    // useEffect(() => dispatch(operations.postContacts()), []);
 
     const handleSubmit = evt => {
-
-        evt.preventDefault();
-        if (allContacts.some(contact => contact.name === evt.target.elements.inputName.value))
-        {
-            alert(`${ evt.target.elements.inputName.value } is already in contacts`)
-        } else
-        {
-            dispatch(addContact({
+        
+                evt.preventDefault();
+                dispatch(operations.postContacts({
+                id: uuidv4(),
                 name: evt.target.elements.inputName.value,
                 number: evt.target.elements.inputNumber.value,
-                id: uuidv4(),
             }))
-        };
+
+        // evt.preventDefault();
+        // if (allContacts.some(contact => contact.name === evt.target.elements.inputName.value))
+        // {
+        //     alert(`${ evt.target.elements.inputName.value } is already in contacts`)
+        // } else
+        // {
+        //     dispatch(operations.postContacts({
+        //         id: uuidv4(),
+        //         name: evt.target.elements.inputName.value,
+        //         number: evt.target.elements.inputNumber.value,
+        //     }))
+        // };
         evt.target.reset();
     };
 
