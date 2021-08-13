@@ -16,7 +16,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 //     }
 // };
 
-export const fetcContacts = createAsyncThunk(
+ export const fetcContacts = createAsyncThunk(
     'contacts/fetcContacts',
      async () => {
     try {
