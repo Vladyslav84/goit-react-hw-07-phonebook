@@ -16,5 +16,4 @@ export default function App() {
       <ContactList />
     </div>
   );
-
 }
