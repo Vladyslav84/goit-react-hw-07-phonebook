@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react';
 import s from './ContactList.module.css';
 import {  useSelector, useDispatch } from 'react-redux';
-import { getContacts, getFilter } from '../../redux/selectors';
+import { filteredSelector } from '../../redux/selectors';
 import * as operations from '../../redux/operations';
 
 export default function ContactList  ()  {
-  
-  const allContacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+
   const dispatch = useDispatch();
   useEffect(() => dispatch(operations.fetcContacts()), [dispatch]);
-  const filteredContactList = allContacts.filter(contact =>
-    contact.name.toLocaleLowerCase().includes(filter));
+  const filteredContactList = useSelector(filteredSelector);
  
   return (
     <ul className={s.contactList}>
