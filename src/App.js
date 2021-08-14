@@ -3,16 +3,16 @@ import Filter from './components/Filter/Filter';
 import ContactList from './components/ContactList/ContactList';
 import s from './App.module.css';
 import { useSelector } from 'react-redux';
-import selectors from './redux/selectors';
+import {getContacts} from './redux/selectors';
 
 export default function App() {
-// const allContacts = useSelector(state => selectors.getContacts(state));
+const allContacts = useSelector(getContacts);
   return (
     <div className={s.container}>
       <h1 className={s.title}>Phonebook</h1>
       <ContactForm />
-      <h2 className={s.title}>Contacts</h2>
-      <Filter />
+      {allContacts.length > 0 && <h2 className={s.title}>Contacts</h2>}
+      {allContacts.length > 0 && <Filter />}
       <ContactList />
     </div>
   );

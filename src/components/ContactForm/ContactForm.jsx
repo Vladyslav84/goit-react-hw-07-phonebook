@@ -1,40 +1,27 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './ContactForm.module.css';
 import { v4 as uuidv4 } from 'uuid';
-import { addContact } from '../../redux/slices/contacts';
-// import selectors from '../../redux/selectors';
-import * as operations from '../../redux/operations'
-// import * as api from '../../api/api'
-// console.log(selectors.getContacts)
+import * as operations from '../../redux/operations';
+import { getContacts } from '../../redux/selectors';
 
 export default function ContactForm() {
     const dispatch = useDispatch();
-    const allContacts = useSelector(state => state.contactsSlice.entities);
-    // useEffect(() => dispatch(operations.fetcContacts()), [dispatch]);
-    // useEffect(() => dispatch(operations.postContacts()), []);
+    const allContacts = useSelector(getContacts);
 
     const handleSubmit = evt => {
-        
-                evt.preventDefault();
-                dispatch(operations.postContacts({
-                id: uuidv4(),
+
+        evt.preventDefault();
+        if (allContacts.some(contact => contact.name === evt.target.elements.inputName.value))
+        {
+            alert(`${ evt.target.elements.inputName.value } is already in contacts`)
+        } else
+        {
+            dispatch(operations.postContacts({
                 name: evt.target.elements.inputName.value,
                 number: evt.target.elements.inputNumber.value,
             }))
-
-        // evt.preventDefault();
-        // if (allContacts.some(contact => contact.name === evt.target.elements.inputName.value))
-        // {
-        //     alert(`${ evt.target.elements.inputName.value } is already in contacts`)
-        // } else
-        // {
-        //     dispatch(operations.postContacts({
-        //         id: uuidv4(),
-        //         name: evt.target.elements.inputName.value,
-        //         number: evt.target.elements.inputNumber.value,
-        //     }))
-        // };
+        };
         evt.target.reset();
     };
 
